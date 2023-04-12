@@ -1,13 +1,13 @@
 import styles from "./page.module.css";
 
 export const metadata = {
-  title: "Home",
+  title: "blog/about",
 };
 
 export default function () {
   return (
     <main>
-      <h1>root page</h1>
+      <h1>blog/about page</h1>
     </main>
   );
 }
