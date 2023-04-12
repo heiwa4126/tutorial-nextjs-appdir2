@@ -25,6 +25,18 @@ export async function getPost(id: string): Promise<Post | undefined> {
   return blog?.[blogIdx?.[id]];
 }
 
+export async function getNextId(id: string): Promise<string | undefined> {
+  const cur: number | undefined = blogIdx[id];
+  if (cur == null) return undefined;
+  return blog[cur - 1]?.id;
+}
+
+export async function getPreviousId(id: string): Promise<string | undefined> {
+  const cur: number | undefined = blogIdx[id];
+  if (cur == null) return undefined;
+  return blog[cur + 1]?.id;
+}
+
 export async function getPostIds(): Promise<string[]> {
   return Object.keys(blogIdx);
 }

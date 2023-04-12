@@ -1,21 +1,32 @@
-import { Post, getPost, getPostIds } from "@/lib/blog";
+import { Post, getPost, getPostIds, getNextId, getPreviousId } from "@/lib/blog";
 import { Metadata } from "next";
 import Link from "next/link";
+import { Suspense } from "react";
 
 export const metadata: Metadata = {
   title: "Blog2",
 };
 
+async function ALink({ Id }: { Id: string }) {
+  const post = await getPost(Id);
+  return (
+    <>
+      {post?.date} - <Link href={`/blog2/${Id}`}>{post?.title}</Link>
+    </>
+  );
+}
+
 async function Idx() {
   const ids = await getPostIds();
   return (
     <ul>
-      {/* @ts-expect-error Async Server Component */}
-      {ids.map(async (id, idx) => {
-        const post = await getPost(id);
+      {ids.map((id, idx) => {
         return (
           <li key={idx}>
-            {post?.date} - <Link href={`/blog2/${id}`}>{post?.title}</Link>
+            <Suspense fallback={<>...</>}>
+              {/* @ts-expect-error Async Server Component */}
+              <ALink Id={id} />
+            </Suspense>
           </li>
         );
       })}
@@ -27,8 +38,11 @@ export default async function Page() {
   return (
     <main>
       <h1>blog2 page</h1>
-      {/* @ts-expect-error Async Server Component */}
-      <Idx />
+      <p>ブログもどき。データはChatGPTに作ってもらいました。</p>
+      <Suspense fallback={<>...</>}>
+        {/* @ts-expect-error Async Server Component */}
+        <Idx />
+      </Suspense>
     </main>
   );
 }
