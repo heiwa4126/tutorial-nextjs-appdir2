@@ -22,8 +22,8 @@ export default async function Page({ params }: { params: { slug: string } }) {
   return (
     <main>
       <h1>{post.title}</h1>
-      <p>{post.tagline}</p>
-      <p>{post.synopsis}</p>
+      <p>{post.date}</p>
+      <p>{post.content}</p>
     </main>
   );
 }

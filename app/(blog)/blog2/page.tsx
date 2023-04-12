@@ -15,7 +15,7 @@ async function Idx() {
         const post = await getPost(id);
         return (
           <li key={idx}>
-            <Link href={`/blog2/${id}`}>{post?.title}</Link>
+            {post?.date} - <Link href={`/blog2/${id}`}>{post?.title}</Link>
           </li>
         );
       })}
