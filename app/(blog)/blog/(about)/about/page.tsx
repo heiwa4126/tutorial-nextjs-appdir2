@@ -1,10 +1,8 @@
-import styles from "./page.module.css";
-
 export const metadata = {
   title: "blog/about",
 };
 
-export default function () {
+export default function Page() {
   return (
     <main>
       <h1>blog/about page</h1>
