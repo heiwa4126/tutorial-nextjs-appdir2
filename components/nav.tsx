@@ -16,13 +16,7 @@ export default function Nav() {
         <Link href="/blog">blog</Link>
       </li>
       <li>
-        <Link href="/blog/about">blog/about</Link>
-      </li>
-      <li>
-        <Link href="/blog/111">blog/111</Link>
-      </li>
-      <li>
-        <Link href="/blog/notfound">blog/notfound</Link>
+        <Link href="/blog2">blog2</Link>
       </li>
     </ul>
   );
