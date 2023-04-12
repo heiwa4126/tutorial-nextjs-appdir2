@@ -1,17 +1,29 @@
 import { Metadata } from "next/types";
 import { notFound } from "next/navigation";
+import { Post, getPost } from "@/lib/blog";
+
+function genTitle(post: Post): string {
+  return `${post.title} | blog2 entry`;
+}
 
 export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
-  return { title: `blog entry - ${params.slug}` };
+  const post = await getPost(params.slug);
+  if (!post) {
+    return {};
+  }
+  return { title: genTitle(post) };
 }
 
 export default async function Page({ params }: { params: { slug: string } }) {
-  if (params.slug === "notfound") {
-    notFound();
+  const post = await getPost(params.slug);
+  if (!post) {
+    return notFound();
   }
   return (
     <main>
-      <h1>blog entry - {params.slug}</h1>
+      <h1>{post.title}</h1>
+      <p>{post.tagline}</p>
+      <p>{post.synopsis}</p>
     </main>
   );
 }
