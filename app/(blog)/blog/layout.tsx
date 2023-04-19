@@ -13,7 +13,6 @@ export default async function Layout({ children }: { children: React.ReactNode }
         <h1>blog layout</h1>
         {children}
         <div>
-
           <GoHome />
         </div>
       </body>

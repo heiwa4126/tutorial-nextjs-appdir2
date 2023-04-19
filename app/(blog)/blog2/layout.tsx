@@ -12,9 +12,9 @@ export default async function Layout({ children }: { children: React.ReactNode }
       <body>
         <h1>blog2 layout</h1>
         {children}
-        <p>
+        <div>
           <GoHome />
-        </p>
+        </div>
       </body>
     </html>
   );

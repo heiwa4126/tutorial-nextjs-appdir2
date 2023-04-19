@@ -4,9 +4,9 @@ export default async function Layout({ children }: { children: React.ReactNode }
   return (
     <>
       {children}
-      <p>
+      <div>
         <Link href="/blog2">← back to blog2</Link>
-      </p>
+      </div>
     </>
   );
 }
